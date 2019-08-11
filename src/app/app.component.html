@@ -7,8 +7,7 @@
         <option *ngFor="let user of users; let i=index">{{i+1}}</option>
       </select>
       <div class="pull-right">
-        Search by user progress : <input type="text" class="form-control" [(ngModel)]="Searchprogress"
-          placeholder="User Progress">
+        Search by user progress : <input type="text" class="form-control" [(ngModel)]="Searchprogress" placeholder="User Progress">
         Search by user name : <input type="text" class="form-control" [(ngModel)]="Searchname" placeholder="User name">
       </div>
       <div class="pull-left">
@@ -56,7 +55,14 @@
           <th style="cursor: pointer;" (click)="onOrderBy('progress')"> Progress </th>
           <th style="cursor: pointer;" (click)="onOrderBy('color')"> Color </th>
         </tr>
-        <tr *ngFor="let user of users | slice :startFromUser:endOnUser | orderBy: order | search: Searchname |searchProgress: Searchprogress">
+        <tr >
+          <td>  <input type="text" class="form-control" [(ngModel)]="searchById" placeholder="Search by Id"> </td>
+          <td>  <input type="text" class="form-control" [(ngModel)]="Searchname" placeholder="Search by Name"> </td>
+          <td>  <input type="text" class="form-control" [(ngModel)]="Searchprogress" placeholder="Search by Progress"> </td>
+          <td>  <input type="text" class="form-control" [(ngModel)]="searchByColor" placeholder="Search by Color"> </td>
+        </tr>
+
+        <tr *ngFor="let user of users | slice :startFromUser:endOnUser | orderBy: order | searchUserBy: 'id' : searchById | searchUserBy: 'name' : Searchname | searchUserBy: 'progress' : Searchprogress | searchUserBy: 'color' : searchByColor | usersWithM: pass ">
           <td> {{user.id}}</td>
           <td> {{user.name}}</td>
           <td> {{user.progress}}</td>

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { OrderByPipe } from './order-by.pipe';
 import { SearchPipe } from './search.pipe';
 import { SearchProgressPipe } from './search-progress.pipe';
+import { UsersWithMPipe } from './users-with-m.pipe';
 
  
 
@@ -13,7 +14,8 @@ import { SearchProgressPipe } from './search-progress.pipe';
     AppComponent,
     OrderByPipe,
     SearchPipe,
-    SearchProgressPipe
+    SearchProgressPipe,
+    UsersWithMPipe
   ],
   imports: [
     BrowserModule,
