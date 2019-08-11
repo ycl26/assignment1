@@ -56,7 +56,7 @@
           <th style="cursor: pointer;" (click)="onOrderBy('progress')"> Progress </th>
           <th style="cursor: pointer;" (click)="onOrderBy('color')"> Color </th>
         </tr>
-        <tr *ngFor="let user of users | slice :start:end | orderBy: order | search: Searchname |searchProgress: Searchprogress">
+        <tr *ngFor="let user of users | slice :startFromUser:endOnUser | orderBy: order | search: Searchname |searchProgress: Searchprogress">
           <td> {{user.id}}</td>
           <td> {{user.name}}</td>
           <td> {{user.progress}}</td>

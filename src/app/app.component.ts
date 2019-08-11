@@ -11,8 +11,8 @@ const INITIAL_USERS_COUNT_PAGE = 10;
 })
 export class AppComponent implements OnInit {
   countUserPage: number = INITIAL_USERS_COUNT_PAGE;
-  start = 0;
-  end: number = INITIAL_USERS_COUNT_PAGE;
+  startFromUser = 0;
+  endOnUser: number = INITIAL_USERS_COUNT_PAGE;
   users: UserData[] = [];
   pages = [];
   activePage = 1;
@@ -58,43 +58,44 @@ export class AppComponent implements OnInit {
     // inner methos var : countUserPage = countUserPage
     // inner method var : countOfUsers = countOfUsers
     this.pages = this.computePages(countUserPage, countOfUsers);
-    this.start = (this.activePage - 1) * this.countUserPage;
-    this.end = this.activePage * this.countUserPage;
+    this.startFromUser = (this.activePage - 1) * this.countUserPage;
+    this.endOnUser = this.activePage * this.countUserPage;
   }
 
   onPageClick(page: number) {
     if (page > 1) {
-      this.start = (page - 1) * this.countUserPage;
-      this.end = page * this.countUserPage;
+      this.startFromUser = (page - 1) * this.countUserPage;
+      this.endOnUser = page * this.countUserPage;
     } else {
-      this.start = 0;
-      this.end = this.countUserPage;
+      this.startFromUser = 0;
+      this.endOnUser = this.countUserPage;
     }
     this.activePage = page;
   }
 
   onPreviousClick() {
     this.activePage = this.activePage - 1;
-    this.start = this.start - this.countUserPage;
-    this.end = this.end - this.countUserPage;
+    this.startFromUser = this.startFromUser - this.countUserPage;
+    this.endOnUser = this.endOnUser - this.countUserPage;
   }
 
   onNextClick() {
     this.activePage = this.activePage + 1;
-    this.start = this.start + this.countUserPage;
-    this.end = this.end + this.countUserPage;
+    this.startFromUser = this.startFromUser + this.countUserPage;
+    this.endOnUser = this.endOnUser + this.countUserPage;
   }
 
   onFirstClick() {
     this.activePage = 1;
-    this.start = 0;
-    this.end = 3;
+    this.startFromUser = 0;
+    this.endOnUser = this.countUserPage;
   }
 
   onLastClick() {
+    let countUserLastPage = this.users.length % this.countUserPage || this.countUserPage;
     this.activePage = this.pages.length;
-    this.start = this.pages.length - 3;
-    this.end = this.pages.length;
+    this.startFromUser = this.users.length - countUserLastPage;
+    this.endOnUser = this.users.length;
   }
 
 }
