@@ -70,4 +70,16 @@
         </tr>
       </table>
     </div>
+
+    
+
   </div>
+  <div class="row">
+      <span class="col-md-6">
+          <app-ball  *ngFor="let ball of rigthBalls" [ball]="ball" (delete)="onMoveRightToLeft($event)" > {{ball}}</app-ball>
+      </span>
+      <span class="col-md-6 pull-right">
+          <app-ball *ngFor="let ball of leftBalls" [ball]="ball" (delete)="onMoveLeftToRight($event)" > {{ball}}</app-ball>
+      </span>
+  </div>
+</div>

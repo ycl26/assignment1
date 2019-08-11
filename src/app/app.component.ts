@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
   pages = [];
   activePage = 0;
   order = undefined;
+  rigthBalls = [0, 1, 2 ,3 , 4 ,5 ];
+   leftBalls  = [];
 
   constructor() {
     this.users = this.createUsers();
@@ -66,6 +68,16 @@ export class AppComponent implements OnInit {
     this.activePage = page;
     this.startFromUser = this.activePage * this.countUserPage;
     this.endOnUser = this.startFromUser + this.countUserPage;
+  }
+
+  onMoveRightToLeft(ball) {
+    this.rigthBalls = this.rigthBalls.filter( item => item !== ball);
+    this.leftBalls.push(ball);
+  }
+
+  onMoveLeftToRight(ball) {
+    this.leftBalls = this.leftBalls.filter( item => item !== ball);
+    this.rigthBalls.push(ball);
   }
 }
 
