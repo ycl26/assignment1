@@ -22,27 +22,27 @@
       </div>
 
       <ul class="pagination pull-right">
-        <li [ngClass]="{'disabled':activePage==1}">
-          <a [ngClass]="{'disabled':activePage==1}"
-            (click)="onFirstClick()">First</a>
+        <li [ngClass]="{'disabled':activePage==0}">
+          <a [ngClass]="{'disabled':activePage==0}"
+            (click)="onPageClick(0)">First</a>
           </li>
-        <li [ngClass]="{'disabled':activePage==1}">
-          <a [ngClass]="{'disabled':activePage==1}"
-            (click)="onPreviousClick()">Previous</a>
+        <li [ngClass]="{'disabled':activePage==0}">
+          <a [ngClass]="{'disabled':activePage==0}"
+            (click)="onPageClick(activePage - 1)">Previous</a>
           </li>
         <li [ngClass]="{'active': page==activePage}" *ngFor="let page of pages">
           <a (click)="onPageClick(page)">Page
-            {{page}}
+            {{page + 1}}
             <!-- pages = users.length/ empInde    -->
           </a>
         </li>
-        <li [ngClass]="{'disabled':activePage==pages.length}">
-          <a [ngClass]="{'disabled':activePage==pages.length}"
-            (click)="onNextClick()">Next</a>
+        <li [ngClass]="{'disabled':activePage==pages.length-1}">
+          <a [ngClass]="{'disabled':activePage==pages.length-1}"
+            (click)="onPageClick(activePage + 1)">Next</a>
           </li>
-        <li [ngClass]="{'disabled':activePage==pages.length}">
-          <a [ngClass]="{'disabled':activePage==pages.length}"
-            (click)="onLastClick()">Last</a>
+        <li [ngClass]="{'disabled':activePage==pages.length-1}">
+          <a [ngClass]="{'disabled':activePage==pages.length-1}"
+            (click)="onPageClick(pages.length-1)">Last</a>
           </li>
       </ul>
 
