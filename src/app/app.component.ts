@@ -73,29 +73,30 @@ export class AppComponent implements OnInit {
     this.activePage = page;
   }
 
-  onPreviousClick(previous: boolean) {
-    if (previous) {//means, previous button click
-      this.activePage = this.activePage - 1;
-      this.start = this.start - this.countUserPage;
-      this.end = this.end - this.countUserPage;
-    } else {//means, next button click
-      this.activePage = this.activePage + 1;
-      this.start = this.start + this.countUserPage;
-      this.end = this.end + this.countUserPage;
+  onPreviousClick() {
+    this.activePage = this.activePage - 1;
+    this.start = this.start - this.countUserPage;
+    this.end = this.end - this.countUserPage;
+  }
 
-    }
+  onNextClick() {
+    this.activePage = this.activePage + 1;
+    this.start = this.start + this.countUserPage;
+    this.end = this.end + this.countUserPage;
   }
-  onFirstClick(first: boolean) {
-    if (first) {
-      this.activePage = 1;
-      this.start = 0;
-      this.end = 3;
-    } else {
-      this.activePage = this.pages.length;
-      this.start = this.pages.length - 3;
-      this.end = this.pages.length;
-    }
+
+  onFirstClick() {
+    this.activePage = 1;
+    this.start = 0;
+    this.end = 3;
   }
+
+  onLastClick() {
+    this.activePage = this.pages.length;
+    this.start = this.pages.length - 3;
+    this.end = this.pages.length;
+  }
+
 }
 
 

@@ -24,17 +24,17 @@
 
 <ul class="pagination pull-right">
   <li [ngClass]="{'disabled':activePage==1}"><a [ngClass]="{'disabled':activePage==1}"
-          (click)="onFirstClick(true)">First</a></li>
+          (click)="onFirstClick()">First</a></li>
   <li [ngClass]="{'disabled':activePage==1}"><a [ngClass]="{'disabled':activePage==1}"
-          (click)="onPreviousClick(true)">Previous</a></li>
+          (click)="onPreviousClick()">Previous</a></li>
   <li [ngClass]="{'active': page==activePage}" *ngFor="let page of pages"><a (click)="onPageClick(page)">Page
           {{page}}
           <!-- pages = users.length/ empInde    -->
           </a></li>
   <li [ngClass]="{'disabled':activePage==pages.length}"><a [ngClass]="{'disabled':activePage==pages.length}"
-          (click)="onPreviousClick(false)">Next</a></li>
+          (click)="onNextClick()">Next</a></li>
   <li [ngClass]="{'disabled':activePage==pages.length}"><a [ngClass]="{'disabled':activePage==pages.length}"
-          (click)="onFirstClick(false)">Last</a></li>
+          (click)="onLastClick()">Last</a></li>
 </ul>
 
 <div class="col-xs-12">    
