@@ -1,0 +1,59 @@
+<h3> Assignment 1 </h3>
+<div class="container">
+    <div class="row">
+<div class="pull-right">
+  How many row would yo like to display:
+  <select [(ngModel)]="countUserPage" (change)="onChange()">
+    <option *ngFor="let user of users; let i=index">{{i+1}}</option>
+  </select>
+  <div class="pull-right">
+  Search by user progress : <input type="text" class="form-control" 
+  [(ngModel)]="Searchprogress" placeholder="User Progress" >
+  Search by user name  : <input type="text" class="form-control" 
+  [(ngModel)]="Searchname" placeholder="User name" >
+</div>
+  <div class="pull-left">
+    How you would like order?
+    <select [(ngModel)]="order">
+        <option>name</option>
+        <option>id</option>
+        <option>progress</option>
+        <option>color</option>
+    </select>
+</div>
+
+<ul class="pagination pull-right">
+  <li [ngClass]="{'disabled':activePage==1}"><a [ngClass]="{'disabled':activePage==1}"
+          (click)="onFirstClick(true)">First</a></li>
+  <li [ngClass]="{'disabled':activePage==1}"><a [ngClass]="{'disabled':activePage==1}"
+          (click)="onPreviousClick(true)">Previous</a></li>
+  <li [ngClass]="{'active': page==activePage}" *ngFor="let page of pages"><a (click)="onPageClick(page)">Page
+          {{page}}
+          <!-- pages = users.length/ empInde    -->
+          </a></li>
+  <li [ngClass]="{'disabled':activePage==pages.length}"><a [ngClass]="{'disabled':activePage==pages.length}"
+          (click)="onPreviousClick(false)">Next</a></li>
+  <li [ngClass]="{'disabled':activePage==pages.length}"><a [ngClass]="{'disabled':activePage==pages.length}"
+          (click)="onFirstClick(false)">Last</a></li>
+</ul>
+
+<div class="col-xs-12">    
+    <input type="checkbox" [(ngModel)]="pass">Only users name star with letter M   
+  </div>
+  <table>
+    <tr>
+      <th style="cursor: pointer;" (click)="onOrderBy('id')"> Id </th>
+      <th style="cursor: pointer;" (click)="onOrderBy('name')"> Name </th>
+      <th style="cursor: pointer;" (click)="onOrderBy('progress')"> Progress </th>
+      <th style="cursor: pointer;" (click)="onOrderBy('color')" > Color </th>
+    </tr>
+    <tr *ngFor="let user of users | slice :start:end | orderBy: order | search: Searchname
+    |searchProgress: Searchprogress">
+      <td> {{user.id}}</td>
+      <td> {{user.name}}</td>
+      <td> {{user.progress}}</td>
+      <td [ngStyle]="{color : user.color}"> {{user.color}}</td>
+    </tr>
+  </table>
+</div>
+</div>
