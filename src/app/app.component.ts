@@ -17,8 +17,8 @@ export class AppComponent implements OnInit {
   pages = [];
   activePage = 0;
   order = undefined;
-  rigthBalls = [0, 1, 2 ,3 , 4 ,5 ];
-   leftBalls  = [];
+  rigthBalls = [1, 2 ,3 , 4 ,5 ];
+  leftBalls  = [6,7,8];
 
   constructor() {
     this.users = this.createUsers();

@@ -20,32 +20,7 @@
         </select>
       </div>
 
-      <ul class="pagination pull-right">
-        <li [ngClass]="{'disabled':activePage==0}">
-          <a [ngClass]="{'disabled':activePage==0}"
-            (click)="onPageClick(0)">First</a>
-          </li>
-        <li [ngClass]="{'disabled':activePage==0}">
-          <a [ngClass]="{'disabled':activePage==0}"
-            (click)="onPageClick(activePage - 1)">Previous</a>
-          </li>
-        <li [ngClass]="{'active': page==activePage}" *ngFor="let page of pages">
-          <a (click)="onPageClick(page)">Page
-            {{page + 1}}
-            <!-- pages = users.length/ empInde    -->
-          </a>
-        </li>
-        <li [ngClass]="{'disabled':activePage==pages.length-1}">
-          <a [ngClass]="{'disabled':activePage==pages.length-1}"
-            (click)="onPageClick(activePage + 1)">Next</a>
-          </li>
-        <li [ngClass]="{'disabled':activePage==pages.length-1}">
-          <a [ngClass]="{'disabled':activePage==pages.length-1}"
-            (click)="onPageClick(pages.length-1)">Last</a>
-          </li>
-      </ul>
-
-      <div class="col-xs-12">
+     <div class="col-xs-12">
         <input type="checkbox" [(ngModel)]="pass">Only users name star with letter M
       </div>
       <table>
@@ -69,9 +44,32 @@
           <td [ngStyle]="{color : user.color}"> {{user.color}}</td>
         </tr>
       </table>
-    </div>
 
-    
+      <ul class="pagination pull-right">
+          <li [ngClass]="{'disabled':activePage==0}">
+            <a [ngClass]="{'disabled':activePage==0}"
+              (click)="onPageClick(0)">First</a>
+            </li>
+          <li [ngClass]="{'disabled':activePage==0}">
+            <a [ngClass]="{'disabled':activePage==0}"
+              (click)="onPageClick(activePage - 1)">Previous</a>
+            </li>
+          <li [ngClass]="{'active': page==activePage}" *ngFor="let page of pages">
+            <a (click)="onPageClick(page)">Page
+              {{page + 1}}
+              <!-- pages = users.length/ empInde    -->
+            </a>
+          </li>
+          <li [ngClass]="{'disabled':activePage==pages.length-1}">
+            <a [ngClass]="{'disabled':activePage==pages.length-1}"
+              (click)="onPageClick(activePage + 1)">Next</a>
+            </li>
+          <li [ngClass]="{'disabled':activePage==pages.length-1}">
+            <a [ngClass]="{'disabled':activePage==pages.length-1}"
+              (click)="onPageClick(pages.length-1)">Last</a>
+            </li>
+        </ul>
+    </div>
 
   </div>
   <div class="row">
