@@ -7,6 +7,7 @@ import { SearchPipe } from './search.pipe';
 import { SearchProgressPipe } from './search-progress.pipe';
 import { UsersWithMPipe } from './users-with-m.pipe';
 import { BallComponent } from './ball/ball.component';
+import { Ball2Component } from './ball2/ball2.component';
 
  
 
@@ -17,7 +18,8 @@ import { BallComponent } from './ball/ball.component';
     SearchPipe,
     SearchProgressPipe,
     UsersWithMPipe,
-    BallComponent
+    BallComponent,
+    Ball2Component
   ],
   imports: [
     BrowserModule,

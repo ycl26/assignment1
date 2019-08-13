@@ -7,7 +7,8 @@
         <option *ngFor="let user of users; let i=index">{{i+1}}</option>
       </select>
       <div class="pull-right">
-        Search by user progress : <input type="text" class="form-control" [(ngModel)]="Searchprogress" placeholder="User Progress">
+        Search by user progress : <input type="text" class="form-control" [(ngModel)]="Searchprogress"
+          placeholder="User Progress">
         Search by user name : <input type="text" class="form-control" [(ngModel)]="Searchname" placeholder="User name">
       </div>
       <div class="pull-left">
@@ -20,7 +21,7 @@
         </select>
       </div>
 
-     <div class="col-xs-12">
+      <div class="col-xs-12">
         <input type="checkbox" [(ngModel)]="pass">Only users name star with letter M
       </div>
       <table>
@@ -30,14 +31,16 @@
           <th style="cursor: pointer;" (click)="onOrderBy('progress')"> Progress </th>
           <th style="cursor: pointer;" (click)="onOrderBy('color')"> Color </th>
         </tr>
-        <tr >
-          <td>  <input type="text" class="form-control" [(ngModel)]="searchById" placeholder="Search by Id"> </td>
-          <td>  <input type="text" class="form-control" [(ngModel)]="Searchname" placeholder="Search by Name"> </td>
-          <td>  <input type="text" class="form-control" [(ngModel)]="Searchprogress" placeholder="Search by Progress"> </td>
-          <td>  <input type="text" class="form-control" [(ngModel)]="searchByColor" placeholder="Search by Color"> </td>
+        <tr>
+          <td> <input type="text" class="form-control" [(ngModel)]="searchById" placeholder="Search by Id"> </td>
+          <td> <input type="text" class="form-control" [(ngModel)]="Searchname" placeholder="Search by Name"> </td>
+          <td> <input type="text" class="form-control" [(ngModel)]="Searchprogress" placeholder="Search by Progress">
+          </td>
+          <td> <input type="text" class="form-control" [(ngModel)]="searchByColor" placeholder="Search by Color"> </td>
         </tr>
 
-        <tr *ngFor="let user of users | slice :startFromUser:endOnUser | orderBy: order | searchUserBy: 'id' : searchById | searchUserBy: 'name' : Searchname | searchUserBy: 'progress' : Searchprogress | searchUserBy: 'color' : searchByColor | usersWithM: pass ">
+        <tr
+          *ngFor="let user of users | slice :startFromUser:endOnUser | orderBy: order | searchUserBy: 'id' : searchById | searchUserBy: 'name' : Searchname | searchUserBy: 'progress' : Searchprogress | searchUserBy: 'color' : searchByColor | usersWithM: pass ">
           <td> {{user.id}}</td>
           <td> {{user.name}}</td>
           <td> {{user.progress}}</td>
@@ -46,38 +49,45 @@
       </table>
 
       <ul class="pagination pull-right">
-          <li [ngClass]="{'disabled':activePage==0}">
-            <a [ngClass]="{'disabled':activePage==0}"
-              (click)="onPageClick(0)">First</a>
-            </li>
-          <li [ngClass]="{'disabled':activePage==0}">
-            <a [ngClass]="{'disabled':activePage==0}"
-              (click)="onPageClick(activePage - 1)">Previous</a>
-            </li>
-          <li [ngClass]="{'active': page==activePage}" *ngFor="let page of pages">
-            <a (click)="onPageClick(page)">Page
-              {{page + 1}}
-              <!-- pages = users.length/ empInde    -->
-            </a>
-          </li>
-          <li [ngClass]="{'disabled':activePage==pages.length-1}">
-            <a [ngClass]="{'disabled':activePage==pages.length-1}"
-              (click)="onPageClick(activePage + 1)">Next</a>
-            </li>
-          <li [ngClass]="{'disabled':activePage==pages.length-1}">
-            <a [ngClass]="{'disabled':activePage==pages.length-1}"
-              (click)="onPageClick(pages.length-1)">Last</a>
-            </li>
-        </ul>
+        <li [ngClass]="{'disabled':activePage==0}">
+          <a [ngClass]="{'disabled':activePage==0}" (click)="onPageClick(0)">First</a>
+        </li>
+        <li [ngClass]="{'disabled':activePage==0}">
+          <a [ngClass]="{'disabled':activePage==0}" (click)="onPageClick(activePage - 1)">Previous</a>
+        </li>
+        <li [ngClass]="{'active': page==activePage}" *ngFor="let page of pages">
+          <a (click)="onPageClick(page)">Page
+            {{page + 1}}
+            <!-- pages = users.length/ empInde    -->
+          </a>
+        </li>
+        <li [ngClass]="{'disabled':activePage==pages.length-1}">
+          <a [ngClass]="{'disabled':activePage==pages.length-1}" (click)="onPageClick(activePage + 1)">Next</a>
+        </li>
+        <li [ngClass]="{'disabled':activePage==pages.length-1}">
+          <a [ngClass]="{'disabled':activePage==pages.length-1}" (click)="onPageClick(pages.length-1)">Last</a>
+        </li>
+      </ul>
     </div>
 
   </div>
   <div class="row">
-      <span class="col-md-6">
-          <app-ball  *ngFor="let ball of rigthBalls" [ball]="ball" (delete)="onMoveRightToLeft($event)" > {{ball}}</app-ball>
-      </span>
-      <span class="col-md-6 pull-right">
-          <app-ball *ngFor="let ball of leftBalls" [ball]="ball" (delete)="onMoveLeftToRight($event)" > {{ball}}</app-ball>
-      </span>
+    <h5 class="text-center">I am the Parent Component</h5>
+    <span class="col-md-6">
+      <h5>Player1</h5>
+      <p>
+        Click a ball to pass it!
+      </p>
+      <app-ball *ngFor="let ball of rigthBalls" [ball]="ball" (delete)="onMoveRightToLeft($event)"> {{ball}}</app-ball>
+    </span>
+    <span class="col-md-6 pull-right">
+      <h5>Player2</h5>
+      <p>
+        Click a ball to pass it!
+      </p>
+      <app-ball2 *ngFor="let ball of leftBalls" [ball]="ball" (delete)="onMoveLeftToRight($event)"> {{ball}}</app-ball2>
+
+    </span>
+
   </div>
 </div>
